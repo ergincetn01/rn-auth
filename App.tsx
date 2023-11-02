@@ -1,12 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import LoginScreen from './src/screens/LoginScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import SignupScreen from './src/screens/SignupScreen';
+import { StyleSheet } from 'react-native';
+import { Provider } from 'react-redux';
+import { store } from './src/store';
+import WelcomeScreen from './src/screens/WelcomeScreen';
 export default function App() {
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='welcome'>
+          <Stack.Screen
+            name='signup'
+            options={{ headerShown: false }}
+            component={SignupScreen}
+          />
+          <Stack.Screen
+            name='login'
+            options={{ headerShown: false }}
+            component={LoginScreen}
+          />
+          <Stack.Screen
+            name='welcome'
+            options={{ headerShown: false }}
+            component={WelcomeScreen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+
   );
 }
 
