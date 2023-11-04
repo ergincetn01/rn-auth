@@ -4,6 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function WelcomeScreen() {
   const navigator = useNavigation();
+
+const toSignup: any =()=> {
+  //@ts-ignore
+  navigator.navigate("signup")
+}
+
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.view}>
@@ -15,7 +21,7 @@ export default function WelcomeScreen() {
           />
         </View>
         <View style={styles.btnContainer}>
-          <Pressable style={styles.btn}>
+          <Pressable onPress={toSignup} style={styles.btn}>
             <Text style={styles.btnText}>Sign up</Text>
           </Pressable>
           <View style={styles.bottom}>
@@ -48,7 +54,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     textAlign: 'center',
-    color: 'grey',
+    color: '#111215',
     fontWeight: 'bold',
     fontSize: 24,
   },
